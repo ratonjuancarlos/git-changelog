@@ -36,8 +36,6 @@ function loadChangelogRc() {
     .then(function(contents){
       try{
         contents = JSON.parse(contents);
-console.log(contents)
-
         deferred.resolve(contents);
       }catch(e){
         module.log('warn', 'Invalid changelogrc file', e);

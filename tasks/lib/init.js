@@ -5,8 +5,8 @@ var _ = require('lodash');
 
 function getRepoSuccess(deferred, url) {
   var module = this;
+  
   this.options.repo_url = url;
-
   this.message('remote', this.options.repo_url);
 
   this.getProviderLinks();
