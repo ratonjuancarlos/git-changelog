@@ -35,6 +35,7 @@
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-mocha-test": "^0.12.1",
     "istanbul": "^0.3.13",
+    "markdown": "^0.5.0",
     "mocha": "^2.2.4",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0"
@@ -42,7 +43,7 @@
   "keywords": [],
   "licenses": "ISC",
   "main": "Gruntfile.js",
-  "name": "git-changelog-fdv",
+  "name": "git-changelog",
   "optionalDependencies": {},
   "preferGlobal": "true",
   "readme": "ERROR: No README data found!",
