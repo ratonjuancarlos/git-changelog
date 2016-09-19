@@ -20,12 +20,12 @@ function printCommit(stream, toRemove, printCommitLinks, prefix, commit) {
 
   if (printCommitLinks) {
 
-    stream.write(format('%s %s\n  (%s\n',  prefix, commit.subject, this.linkToIssue(issue)));
+    stream.write(format('%s %s\n (%s',  prefix, commit.subject, this.linkToIssue(issue)));
 
     if (commit.closes.length) {
       stream.write(',\n   ' + commit.closes.map(this.linkToIssue, this).join(', '));
     }
-    stream.write(')\n');
+    stream.write(')\n\n');
   } else {
     stream.write(format('%s %s\n', prefix, commit.subject));
   }
