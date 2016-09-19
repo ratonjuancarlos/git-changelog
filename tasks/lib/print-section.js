@@ -13,14 +13,14 @@ function printCommit(stream, toRemove, printCommitLinks, prefix, commit) {
   }
 
 
-  var re = /^PA-\d+/g;
+  var re = /^PA-\d+/gi;
   var issue = commit.subject.match(re);
   commit.subject = commit.subject.replace(issue + '-', "");
   commit.subject = changeCase.sentenceCase(commit.subject);
 
   if (printCommitLinks) {
 
-    stream.write(format('%s %s\n  %s\n',  prefix, commit.subject, this.linkToIssue(issue)));
+    stream.write(format('%s %s\n  (%s\n',  prefix, commit.subject, this.linkToIssue(issue)));
 
     if (commit.closes.length) {
       stream.write(',\n   ' + commit.closes.map(this.linkToIssue, this).join(', '));
