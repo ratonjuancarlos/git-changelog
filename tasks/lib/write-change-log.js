@@ -13,9 +13,10 @@ function sendToStream(stream, sections, deferred) {
   this.options.sections.forEach(function(section){
     var sectionType = section.grep.replace('^', '');
     if(sectionType !== 'BREAKING'){
-      module.printSection(stream, section.title, sections[sectionType]);
+      section.remove = section.remove || false;
+      module.printSection(stream, section.title, sections[sectionType], section.remove);
     }else if (sections.BREAKING[module.emptyComponent].length > 0 ) {
-      module.printSection(stream, 'Breaking Changes', sections.BREAKING, false);
+      module.printSection(stream, 'Breaking Changes', sections.BREAKING, section.remove, false);
     }
   });
 

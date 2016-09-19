@@ -10,6 +10,7 @@ function getRepoSuccess(deferred, url) {
   this.message('remote', this.options.repo_url);
 
   this.getProviderLinks();
+  this.getIssueTrackerLinks();
   this.getGitLogCommands();
   deferred.resolve();
 }
@@ -38,6 +39,10 @@ function init(params, loadRC) {
 
       module.options.grep_commits = module.options.sections.map(function(section) {
         return section.grep;
+      }).join('|');
+
+      module.options.remove_from_commits = module.options.sections.map(function(section) {
+        return section.remove || false;
       }).join('|');
 
       module.log('debug', 'Grep commits: ', module.options.grep_commits);

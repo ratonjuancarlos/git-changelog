@@ -61,6 +61,7 @@
     "url": "https://github.com/rafinskipg/git-changelog/issues"
   },
   "dependencies": {
+    "change-case": "^3.0.0",
     "colors": "^1.1.0",
     "commander": "^2.8.0",
     "debug": "^2.1.3",
