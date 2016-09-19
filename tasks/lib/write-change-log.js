@@ -3,10 +3,13 @@
 var debug = require('debug')('changelog:writeChangelog');
 var format = require('util').format;
 var q = require('q');
+var fse = require('fs-extra');
+    var markdown = require( "markdown" ).markdown;
 
 function sendToStream(stream, sections, deferred) {
 
   var module = this;
+  var streamHTML;
 
   this.printHeader(stream, this.options, this.currentDate());
 
@@ -21,8 +24,17 @@ function sendToStream(stream, sections, deferred) {
   });
 
   this.printSalute(stream);
+
   stream.end();
   stream.on('finish', deferred.resolve);
+  
+  var fileNameHTML = this.options.file.replace(".md", ".html");
+
+  fse.readFile(this.options.file, 'utf8', function(err, contents) {
+    streamHTML = fse.createOutputStream(fileNameHTML);
+    streamHTML.write(markdown.toHTML( contents));
+    streamHTML.end();
+  });
 }
 
 function writeChangelog(stream, commits) {
