@@ -19,7 +19,8 @@ function cmdDone(deferred, code, stdout, stderr) {
   stdout
     .split('\n==END==\n')
     .forEach(processRawCommit.bind(this, commits), this);
-
+    this.log('debug', 'Parseando', commits, 'commits');
+console.log(commits)
   deferred.resolve(commits);
 }
 
