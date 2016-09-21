@@ -8,7 +8,8 @@ function generateFromCommits(deferred, commits, sections) {
   var stream;
 
   this.message('parsed commits', commits.length);
-  this.log('debug', 'Parsed', commits.length, 'commits');
+  this.log('info', 'All Commits', commits );
+  this.log('info', 'Parsed', commits.length, 'commits');
   this.log('info','Generating changelog to', this.options.file || 'stdout', '(', this.options.version, ')');
 
   if (this.options.file) {
