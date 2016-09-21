@@ -32,7 +32,7 @@ function sendToStream(stream, sections, deferred) {
 
   fse.readFile(this.options.file, 'utf8', function(err, contents) {
     streamHTML = fse.createOutputStream(fileNameHTML);
-    streamHTML.write('<link rel="stylesheet" href="./src/styles/changelog.css">');
+    streamHTML.write('<link rel="stylesheet" href="changelog.css">');
     streamHTML.write(markdown.toHTML( contents));
     streamHTML.end();
   });
