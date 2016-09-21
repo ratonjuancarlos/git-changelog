@@ -13,7 +13,7 @@ function printCommit(stream, toRemove, printCommitLinks, prefix, commit) {
   }
 
 
-  var re = /^PA-\d+/gi;
+  var re = /^(PA|EO)-\d+/gi;
   var issue = commit.subject.match(re);
   commit.subject = commit.subject.replace(issue + '-', "");
   commit.subject = changeCase.sentenceCase(commit.subject);
