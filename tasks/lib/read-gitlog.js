@@ -20,8 +20,7 @@ function cmdDone(deferred, code, stdout, stderr) {
     .split('\n==END==\n')
     .forEach(processRawCommit.bind(this, commits), this);
     this.log('debug', 'Parseando', commits, 'commits');
-console.log(commits)
-  deferred.resolve(commits);
+    deferred.resolve(commits);
 }
 
 function gitLogCommand(git_log_command, from) {
