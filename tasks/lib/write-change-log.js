@@ -23,7 +23,7 @@ function sendToStream(stream, sections, deferred) {
   });
 
   this.printSalute(stream);
-
+  stream.write('</body>');
   stream.end();
   stream.on('finish', deferred.resolve);
 }
