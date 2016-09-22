@@ -10,9 +10,10 @@ function getIssueTrackerLinks() {
   var issueTrackerLinks = {
     jira: {
       issue_tracker: '[#%s](' + this.options.issue_tracker_url + '/browse/%s)',
+      issue_tracker_html: '<a href="' + this.options.issue_tracker_url + '/browse/%s">%s</a>',
     }
   };
-  this.links.issue_tracker = issueTrackerLinks.jira.issue_tracker;
+  this.links.issue_tracker = issueTrackerLinks.jira.issue_tracker_html;
 }
 
 module.exports = getIssueTrackerLinks;

@@ -20,26 +20,26 @@ function printCommit(stream, toRemove, printCommitLinks, prefix, commit) {
 
   if (printCommitLinks) {
 
-    stream.write(format('%s %s\n (%s',  prefix, commit.subject, this.linkToIssue(issue)));
+    stream.write(format('<li>%s %s %s',  prefix, commit.subject, this.linkToIssue(issue)));
 
     if (commit.closes.length) {
       stream.write(',\n   ' + commit.closes.map(this.linkToIssue, this).join(', '));
     }
-    stream.write(')\n\n');
+    stream.write('</li>\n\n');
   } else {
-    stream.write(format('%s %s\n', prefix, commit.subject));
+    stream.write(format('%s %s', prefix, commit.subject));
   }
 }
 
 function printComponent(stream, section, toRemove, printCommitLinks, name) {
-  var prefix = '-';
+  var prefix = '';
   var nested = section[name].length > 1;
   if (name !== this.emptyComponent) {
     if (nested) {
-      stream.write(format('- **%s:**\n', name));
-      prefix = '  -';
+      stream.write(format('<bold>%s:</bold>', name));
+      prefix = '<li>';
     } else {
-      prefix = format('- **%s:**', name);
+      prefix = format('<bold>%s:</bold>', name);
     }
   }
 
@@ -55,9 +55,11 @@ function printSection(stream, title, section, toRemove, printCommitLinks) {
     return;
   }
 
-  stream.write(format('\n## %s\n\n', title));
-
+  // stream.write(format('\n## %s\n\n', title));
+  stream.write(format('<h2>%s</h2>\n', title));
+stream.write('<ul>');
   components.forEach(printComponent.bind(this, stream, section, toRemove, printCommitLinks), this);
+stream.write('</ul>\n');
 
   stream.write('\n');
 }
